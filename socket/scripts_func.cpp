@@ -29,7 +29,6 @@ bool Writen(const int sockfd, const char *buffer, const size_t n){
 
 
 int main(int argc, char **argv){
-    std::cout << 1 << std::endl;
     return 0;
 }
 
