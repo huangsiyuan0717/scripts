@@ -1,0 +1,3 @@
+/home/hsy/tools/scrpts/downsample_pcd/build/CMakeFiles/rebuild_cache.dir
+/home/hsy/tools/scrpts/downsample_pcd/build/CMakeFiles/downsample.dir
+/home/hsy/tools/scrpts/downsample_pcd/build/CMakeFiles/edit_cache.dir
