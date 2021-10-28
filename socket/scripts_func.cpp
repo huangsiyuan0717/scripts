@@ -27,6 +27,32 @@ bool Writen(const int sockfd, const char *buffer, const size_t n){
     return true;
 }
 
+bool TcpRead(const int sockfd, char *buffer, int *ibuflen, const int itimeout = 0){
+    if (sockfd == -1) return false;
+
+    if (itimeout > 0){
+        fd_set tmpfd;
+
+        FD_ZERO(&tmpfd);
+        FD_SET(sockfd,&tmpfd);
+
+        struct timeval timeout;
+        timeout.tv_sec = itimeout; timeout.tv_usec = 0;
+
+        int i;
+        if ( (i = select(sockfd+1,&tmpfd,0,0,&timeout)) <= 0 ) return false;
+    }
+
+    (*ibuflen) = 0;
+    if(Readn(sockfd, (char *)ibuflen, 4) == false) return false;
+
+    (*ibuflen) = ntohl(*ibuflen);
+
+    if(Readn(sockfd, buffer, (*ibuflen)) == false) return false;
+
+    return true;
+}
+
 
 int main(int argc, char **argv){
     return 0;
